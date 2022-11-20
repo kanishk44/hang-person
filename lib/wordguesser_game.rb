@@ -60,12 +60,12 @@ class WordGuesserGame
   end
 
   def game_result
-    count = 0
+    length = 0
     return :lose if @wrong_guesses.length >= 7
     @word.each_char do |letter|
-      count += 1 if @guesses.include? letter # if letter =~ /[#{@guesses}]/
+      length += 1 if @guesses.include? letter # if letter =~ /[#{@guesses}]/
     end
-    if count == @word.length then :win
+    if length == @word.length then :win
     else :play end
   end
 
