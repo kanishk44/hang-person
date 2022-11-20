@@ -47,7 +47,7 @@ class WordGuesserGame
     end
   end
 
-  def check_word
+  def word_with_guesses
     ans = ""
     @word.each_char do |letter|
       if @guesses.include? letter
