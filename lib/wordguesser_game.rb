@@ -26,7 +26,7 @@ class WordGuesserGame
   end
 
   def new_game(randomWord)
-    @hangpersonGame = HangpersonGame.new(randomWord)
+    @hangpersonGame = HangpersonGame.new_game(randomWord)
   end
 
   def guess_word(letter)
