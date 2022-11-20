@@ -30,7 +30,7 @@ class WordGuesserApp < Sinatra::Base
     word = params[:word] || WordGuesserGame.get_random_word
     # NOTE: don't change previous line - it's needed by autograder!
 
-    @game = WordGuesserGame.new_game(word)
+    @game = WordGuesserGame.new(word)
     redirect '/show'
   end
 
@@ -38,12 +38,12 @@ class WordGuesserApp < Sinatra::Base
   # If a guess is repeated, set flash[:message] to "You have already used that letter."
   # If a guess is invalid, set flash[:message] to "Invalid guess."
   post '/guess' do
-    if params[:guess].to_s[0] =~ /[[:alpha:]]/
-      letter = params[:guess].to_s[0]
+    if params[:guess_word].to_s[0] =~ /[[:alpha:]]/
+      letter = params[:guess_word].to_s[0]
       if @game.guesses.include? letter or @game.wrong_guesses.include? letter
         flash[:message] = "You have already used that letter."
       else
-        @game.guess letter
+        @game.guess_word letter
       end
     else
       flash[:message] = "Invalid guess."
