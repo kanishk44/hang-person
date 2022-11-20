@@ -43,7 +43,7 @@ class WordGuesserApp < Sinatra::Base
       if @game.guesses.include? letter or @game.wrong_guesses.include? letter
         flash[:message] = "You have already used that letter."
       else
-        @game.guess letter
+        @game.guess_word letter
       end
     else
       flash[:message] = "Invalid guess."

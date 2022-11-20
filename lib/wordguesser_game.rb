@@ -29,20 +29,20 @@ class WordGuesserGame
     @hangpersonGame = HangpersonGame.new(word)
   end
 
-  def guess(char)
-    if char =~ /[[:alpha:]]/
-      char.downcase!
-      if @word.include? char and !@guesses.include? char
-        @guesses.concat char
+  def guess_word(let)
+    if let =~ /[[:alpha:]]/
+      let.downcase!
+      if @word.include? let and !@guesses.include? let
+        @guesses.concat let
         return true
-      elsif !@wrong_guesses.include? char and !@word.include? char
-        @wrong_guesses.concat char
+      elsif !@wrong_guesses.include? char and !@word.include? let
+        @wrong_guesses.concat let
         return true
       else
         return false
       end
     else
-      char = :invalid
+      let = :invalid
       raise ArgumentError
     end
   end
