@@ -56,7 +56,7 @@ class WordGuesserGame
         ans.concat '-'
       end
     end
-    return result
+    return ans
   end
 
   def game_result
