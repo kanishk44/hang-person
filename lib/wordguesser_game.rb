@@ -47,13 +47,13 @@ class WordGuesserGame
     end
   end
 
-  def word_with_guesses
-    result = ""
+  def check_word
+    ans = ""
     @word.each_char do |letter|
       if @guesses.include? letter
-        result.concat letter
+        ans.concat letter
       else
-        result.concat '-'
+        ans.concat '-'
       end
     end
     return result
