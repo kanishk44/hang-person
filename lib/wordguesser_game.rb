@@ -59,13 +59,13 @@ class WordGuesserGame
     return result
   end
 
-  def check_win_or_lose
-    counter = 0
+  def game_result
+    count = 0
     return :lose if @wrong_guesses.length >= 7
     @word.each_char do |letter|
-      counter += 1 if @guesses.include? letter # if letter =~ /[#{@guesses}]/
+      count += 1 if @guesses.include? letter # if letter =~ /[#{@guesses}]/
     end
-    if counter == @word.length then :win
+    if count == @word.length then :win
     else :play end
   end
 
