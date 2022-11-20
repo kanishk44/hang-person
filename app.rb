@@ -39,11 +39,11 @@ class WordGuesserApp < Sinatra::Base
   # If a guess is invalid, set flash[:message] to "Invalid guess."
   post '/guess' do
     if params[:guess].to_s[0] =~ /[[:alpha:]]/
-      letter = params[:guess].to_s[0]
-      if @game.guesses.include? letter or @game.wrong_guesses.include? letter
+      let = params[:guess].to_s[0]
+      if @game.guesses.include? let or @game.wrong_guesses.include? let
         flash[:message] = "You have already used that letter."
       else
-        @game.guess letter
+        @game.guess let
       end
     else
       flash[:message] = "Invalid guess."

@@ -49,9 +49,9 @@ class WordGuesserGame
 
   def check_word
     ans = ""
-    @word.each_char do |chr|
-      if @guesses.include? chr
-        ans.concat chr
+    @word.each_char do |let|
+      if @guesses.include? let
+        ans.concat let
       else
         ans.concat '-'
       end
