@@ -25,47 +25,47 @@ class WordGuesserGame
     }
   end
 
-  def new(word)
-    @hangpersonGame = HangpersonGame.new(word)
+  def new_game(randomWord)
+    @hangpersonGame = HangpersonGame.new(randomWord)
   end
 
-  def guess(char)
-    if char =~ /[[:alpha:]]/
-      char.downcase!
-      if @word.include? char and !@guesses.include? char
-        @guesses.concat char
+  def guess_word(letter)
+    if letter =~ /[[:alpha:]]/
+      letter.downcase!
+      if @word.include? letter and !@guesses.include? letter
+        @guesses.concat letter
         return true
-      elsif !@wrong_guesses.include? char and !@word.include? char
-        @wrong_guesses.concat char
+      elsif !@wrong_guesses.include? letter and !@word.include? letter
+        @wrong_guesses.concat letter
         return true
       else
         return false
       end
     else
-      char = :invalid
+      letter = :invalid
       raise ArgumentError
     end
   end
 
-  def word_with_guesses
-    result = ""
-    @word.each_char do |letter|
-      if @guesses.include? letter
-        result.concat letter
+  def check_word
+    ans = ""
+    @word.each_char do |chr|
+      if @guesses.include? chr
+        ans.concat chr
       else
-        result.concat '-'
+        ans.concat '-'
       end
     end
-    return result
+    return ans
   end
 
-  def check_win_or_lose
-    counter = 0
+  def game_result
+    count = 0
     return :lose if @wrong_guesses.length >= 7
-    @word.each_char do |letter|
-      counter += 1 if @guesses.include? letter # if letter =~ /[#{@guesses}]/
+    @word.each_char do |let|
+      count += 1 if @guesses.include? let # if let =~ /[#{@guesses}]/
     end
-    if counter == @word.length then :win
+    if count == @word.length then :win
     else :play end
   end
 
