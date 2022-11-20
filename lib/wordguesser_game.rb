@@ -29,7 +29,7 @@ class WordGuesserGame
     @hangpersonGame = HangpersonGame.new(word)
   end
 
-  def guess_word(let)
+  def guess(let)
     if let =~ /[[:alpha:]]/
       let.downcase!
       if @word.include? let and !@guesses.include? let
